@@ -9,4 +9,4 @@ def test_titolo_pagina_pom(page: Page):
 def test_link_info_pom(page: Page):
     example_page = ExampleDomainPage(page)
     example_page.navigate()
-    assert "More information..." in example_page.get_info_link_text()
+    assert "Learn more" in example_page.get_info_link_text()

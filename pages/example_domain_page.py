@@ -5,7 +5,7 @@ class ExampleDomainPage:
         self.page = page
         self.url = "https://example.com"
         self.main_title = page.locator("h1")
-        self.info_link = page.locator("text=More information...")
+        self.info_link = page.get_by_role("link", name="Learn more")
 
     def navigate(self):
         self.page.goto(self.url)

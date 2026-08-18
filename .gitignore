@@ -1,0 +1,17 @@
+# Python & Pytest cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Playwright & Report output
+report.html
+screenshots/
+test-results/
+
+# Ambiente virtuale (se ne usi uno locale)
+venv/
+.venv/
+env/
+
+# Configurazioni locali / Segreti
+.env

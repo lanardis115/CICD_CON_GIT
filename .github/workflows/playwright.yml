@@ -11,31 +11,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-                                              # 1. Scarica il codice del repository sulla macchina virtuale runner
       - name: Checkout repository
         uses: actions/checkout@v4
 
-                                            # 2. Configura l'ambiente Python (versione 3.11)
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-                                                 # 3. Installa i pacchetti Python necessari (pytest, il plugin Playwright e il generator di report HTML)
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pytest pytest-playwright pytest-html
 
-      # 4. Installa il browser Chromium e le dipendenze di sistema Linux richieste da Playwright
       - name: Install Playwright Browsers
         run: playwright install --with-deps chromium
 
-      # 5. Esegue i test con Pytest e genera il report HTML standalone
-      - name: Run Playwright Tests
-        run: pytest --html=report.html --self-contained-html
+      - name: Run Python Suite
+        run: python run_tests.py
 
-      # 6. Salva il report HTML generato come Artifact scaricabile (viene eseguito anche se i test falliscono)
       - name: Upload Test Report
         if: always()
         uses: actions/upload-artifact@v4
